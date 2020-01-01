@@ -14,7 +14,7 @@ The configuration is currently setup with several common testing frameworks (JUn
 
 ### Setup Steps:
 This project is largely setup in advance, however a few minor tweaks need to be made to fit your project's needs.
-* Setup the project on SonarCloud, to prepare the project Token (referred to as project.login on SonarCloud), project key, and organization. Select "Other Tools" when asked which build tool you use, and select "Maven" on the next page. Use the "mvn -Dproject.login=YOUR_SONAR_TOKEN verify sonar:sonar" command, as specified by SonarCloud, on your local repo for the project. Note that sometimes Maven responds with Build Failure, despire the verify command actually working.
+* Setup the project on SonarCloud, to prepare the project Token (referred to as project.login on SonarCloud), project key, and organization. Select "Other Tools" when asked which build tool you use, and select "Maven" on the next page. Use the "mvn -Dsonar.login=YOUR_SONAR_TOKEN verify sonar:sonar" command, as specified by SonarCloud, on your local repo for the project.
 * Place the Sonar Token in the Github secrets with the name SONAR_TOKEN.
 * Update the properties area in pom.xml with the project key and organization.
 * Update the distributionManagement area in pom.xml with your organization name and project name. Make sure to leave your organization name in all lowercase.
