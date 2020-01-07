@@ -16,8 +16,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repo
       - uses: actions/checkout@v2
 
+      - name: Cache maven build
       - uses: actions/cache@v1
         with:
           path: ~/.m2/repository
@@ -37,18 +39,33 @@ jobs:
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
 
     steps:
-      - uses: actions/checkout@v2
-        if: github.ref == 'refs/heads/master'
+      - name: Generate build number
+        uses: einaregilsson/build-number@v2
+        with:
+          token: ${{secrets.github_token}}
 
+      - name: Print build number
+        run: echo "Build number is $BUILD_NUMBER"
+
+      - name: Checkout repo
+      - uses: actions/checkout@v2
+
+      - name: Cache maven build
       - uses: actions/cache@v1
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-maven-
-        if: github.ref == 'refs/heads/master'
+
+      - name: Apply build number
+        env:
+          BUILD_NUMBER: ${{ steps.buildnumber.outputs.build_number }}
+        run: |
+          sed -i "s|<version>dev_build</version>|<version>build_${BUILDNUMBER}</version>|g" pom.xml
 
       - name: Configure Maven Deploy
         env:
@@ -58,4 +75,3 @@ jobs:
           mkdir -p ~/.m2
           echo "<settings><servers><server><id>github</id><username>${USERNAME}</username><password>${GITHUB_TOKEN}</password></server></servers></settings>" > ~/.m2/settings.xml
           mvn deploy
-        if: github.ref == 'refs/heads/master'

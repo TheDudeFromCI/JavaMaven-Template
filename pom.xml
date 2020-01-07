@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.whg</groupId>
     <artifactId>javamaven-template</artifactId>
-    <version>build-1</version>
+    <version>dev_build</version>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
