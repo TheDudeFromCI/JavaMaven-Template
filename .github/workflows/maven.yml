@@ -62,10 +62,8 @@ jobs:
             ${{ runner.os }}-maven-
 
       - name: Apply build number
-        env:
-          BUILD_NUMBER: ${{ steps.buildnumber.outputs.build_number }}
         run: |
-          sed -i "s|<version>dev_build</version>|<version>build_${BUILD_NUMBER}</version>|g" pom.xml
+          sed -i "s|<version>dev_build</version>|<version>build_$BUILD_NUMBER</version>|g" pom.xml
 
       - name: Configure Maven Deploy
         env:
