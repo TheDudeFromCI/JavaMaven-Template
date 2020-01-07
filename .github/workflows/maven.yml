@@ -51,10 +51,10 @@ jobs:
         run: echo "Build number is $BUILD_NUMBER"
 
       - name: Checkout repo
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
 
       - name: Cache maven build
-      - uses: actions/cache@v1
+        uses: actions/cache@v1
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
