@@ -1,3 +1,4 @@
+[![Actions Status](https://github.com/TheDudeFromCI/JavaMaven-Template/workflows/CI/badge.svg)](https://github.com/TheDudeFromCI/JavaMaven-Template/actions)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=TheDudeFromCI_JavaMaven-Template&metric=alert_status)](https://sonarcloud.io/dashboard?id=TheDudeFromCI_JavaMaven-Template)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=TheDudeFromCI_JavaMaven-Template&metric=bugs)](https://sonarcloud.io/dashboard?id=TheDudeFromCI_JavaMaven-Template)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=TheDudeFromCI_JavaMaven-Template&metric=coverage)](https://sonarcloud.io/dashboard?id=TheDudeFromCI_JavaMaven-Template)
